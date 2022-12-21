@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 
 const familySchema = mongoose.Schema({
     name: {
@@ -14,22 +15,10 @@ const familySchema = mongoose.Schema({
         required: true
     }],
     members: [{
-        type: String,
+        type: ObjectId,
+        ref: "Child",
         required: true
     }],
-    
-    dob: Date,
-    birthplace: String,
-    address: String,
-    email: String,
-    Phone: String,
-    anniversary: Date,
-    notes: String,
-    deathTime: Date,
-    deathPlace: String,
-    deathRestingPlace: String,
-    deathCertificate: String,
-
 }, { timestamps: true });
 
 const Family = mongoose.model("Family", familySchema);
