@@ -6,6 +6,7 @@ const cors = require("cors");
 const colors = require("colors");
 
 const database = require("./utils/database");
+const familyRoute = require("./routes/family.route")
 const errorController = require("./controllers/error.controller");
 
 app.use(express.json());
@@ -15,6 +16,8 @@ database();
 app.get("/", (req, res) => {
     res.send("Server running...");
 });
+
+app.use("/api/family", familyRoute)
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`.yellow.bold);
